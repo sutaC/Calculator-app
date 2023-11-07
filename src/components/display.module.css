@@ -1,5 +1,5 @@
 .display {
-    width: 100%;
+    max-width: 100%;
     margin: 0.5em 0;
     padding: 1em;
 
@@ -8,4 +8,14 @@
     background: var(--clr-screen-bg);
     font-size: var(--sz-text-big);
     text-align: right;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.display>span {
+    position: absolute;
+    top: 75%;
+    right: 1rem;
+    translate: 0 -100%;
 }
