@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./multiToggle.module.css";
 
 export default function MultiToggle(params: { states: number }) {
@@ -10,6 +10,10 @@ export default function MultiToggle(params: { states: number }) {
 	const states: JSX.Element[] = [];
 
 	const [selectedOption, setSelectedOption] = useState(1);
+	useEffect(() => {
+		setSelectedOption(Number(localStorage.getItem("theme") ?? 1));
+	}, []);
+
 	const toggles: JSX.Element[] = [];
 	for (let i = 0; i < params.states; i++) {
 		states.push(
