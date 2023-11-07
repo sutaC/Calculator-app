@@ -21,9 +21,15 @@
     border-radius: 0.5rem;
     box-shadow: 0 0.15em var(--clr-key-neutral-shadow);
 
+    cursor: pointer;
     font-size: var(--sz-text-big);
     color: var(--clr-text-contrast);
     background: var(--clr-key-neutral-bg);
+}
+
+.key:hover,
+.key:focus {
+    opacity: 0.85;
 }
 
 .key.double.left {

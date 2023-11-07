@@ -1,5 +1,3 @@
-.multiToggle {}
-
 .headers {
     display: flex;
     align-items: center;
@@ -8,12 +6,12 @@
 
 .headers>label,
 .toggleBox {
+    cursor: pointer;
     margin: 0 0.33rem;
 }
 
 .headers,
 .toggle {
-
     padding: 0.33rem;
 }
 
@@ -27,7 +25,7 @@
     position: relative;
 }
 
-.toggleBox:checked::after {
+.toggleBox::after {
     position: absolute;
     content: "";
 
@@ -35,6 +33,15 @@
     aspect-ratio: 1;
     border-radius: 100%;
 
-    visibility: visible;
+    cursor: pointer;
     background-color: var(--clr-key-primary-bg);
+}
+
+.toggleBox:checked:after {
+    visibility: visible;
+}
+
+.toggleBox:checked:hover::after,
+.toggleBox:checked:focus::after {
+    opacity: 0.85;
 }
