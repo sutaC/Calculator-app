@@ -1,3 +1,40 @@
-.multiToggle {
-    /*  */
+.multiToggle {}
+
+.headers {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.headers>label,
+.toggleBox {
+    margin: 0 0.33rem;
+}
+
+.headers,
+.toggle {
+
+    padding: 0.33rem;
+}
+
+.toggle {
+    background: var(--clr-elements-bg);
+    border-radius: 1rem;
+}
+
+.toggleBox {
+    visibility: hidden;
+    position: relative;
+}
+
+.toggleBox:checked::after {
+    position: absolute;
+    content: "";
+
+    width: 125%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+
+    visibility: visible;
+    background-color: var(--clr-key-primary-bg);
 }

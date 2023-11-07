@@ -3,10 +3,10 @@ import MultiToggle from "./multiToggle";
 
 export default function Header() {
 	return (
-		<header>
+		<header className={styles.header}>
 			<h1>calc</h1>
 
-			<div className='wrap'>
+			<div className={styles.wrap}>
 				<p>theme</p>
 				<MultiToggle states={3}></MultiToggle>
 			</div>

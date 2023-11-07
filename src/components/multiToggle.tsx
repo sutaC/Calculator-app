@@ -8,9 +8,6 @@ export default function MultiToggle(params: { states: number }) {
 	}
 
 	const states: JSX.Element[] = [];
-	for (let i = 0; i < params.states; i++) {
-		states.push(<label htmlFor={"toggleBox-" + (i + 1)}>{i + 1}</label>);
-	}
 
 	const [selectedOption, setSelectedOption] = useState(1);
 	const onChangeEvent = new CustomEvent("change", {
@@ -19,15 +16,21 @@ export default function MultiToggle(params: { states: number }) {
 
 	const toggles: JSX.Element[] = [];
 	for (let i = 0; i < params.states; i++) {
+		states.push(
+			<label key={i} htmlFor={"toggleBox-" + (i + 1)}>
+				{i + 1}
+			</label>
+		);
 		toggles.push(
 			<input
 				className={styles.toggleBox}
 				id={"toggleBox-" + (i + 1)}
 				type='radio'
+				key={i}
 				name='toggle'
 				value={i + 1}
 				checked={selectedOption === i + 1}
-				onClick={(event: any) => {
+				onChange={(event: any) => {
 					setSelectedOption(Number(event.target.value));
 					dispatchEvent(onChangeEvent);
 				}}
