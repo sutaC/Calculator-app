@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+input,
+button {
+    font-family: 'League Spartan', sans-serif;
+}
+
+:root,
+:root:has(.color-scheme-1) {
+    --clr-main-bg: hsl(222, 26%, 31%);
+    --clr-elements-bg: hsl(223, 31%, 20%);
+    --clr-screen-bg: hsl(224, 36%, 15%);
+
+    --clr-key-secondary-bg: hsl(225, 21%, 49%);
+    --clr-key-secondary-shadow: hsl(224, 28%, 35%);
+
+    --clr-key-primary-bg: hsl(6, 63%, 50%);
+    --clr-key-primary-shadow: hsl(6, 70%, 34%);
+
+    --clr-key-neutral-bg: hsl(30, 25%, 89%);
+    --clr-key-neutral-shadow: hsl(28, 16%, 65%);
+
+    --clr-text-contrast: hsl(221, 14%, 31%);
+    --clr-text: hsl(0, 0%, 100%);
+}
+
+:root:has(.color-scheme-2) {
+    --clr-main-bg: hsl(0, 0%, 90%);
+    --clr-elements-bg: hsl(0, 5%, 81%);
+    --clr-screen-bg: hsl(0, 0%, 93%);
+
+    --clr-key-secondary-bg: hsl(185, 42%, 37%);
+    --clr-key-secondary-shadow: hsl(185, 58%, 25%);
+
+    --clr-key-primary-bg: hsl(25, 98%, 40%);
+    --clr-key-primary-shadow: hsl(25, 99%, 27%);
+
+    --clr-key-neutral-bg: hsl(45, 7%, 89%);
+    --clr-key-neutral-shadow: hsl(35, 11%, 61%);
+
+    --clr-text-contrast: hsl(60, 10%, 19%);
+    --clr-text: hsl(0, 0%, 100%);
+}
+
+:root:has(.color-scheme-3) {
+    --clr-main-bg: hsl(268, 75%, 9%);
+    --clr-elements-bg: hsl(268, 71%, 12%);
+    --clr-screen-bg: hsl(268, 71%, 12%);
+
+    --clr-key-secondary-bg: hsl(281, 89%, 26%);
+    --clr-key-secondary-shadow: hsl(285, 91%, 52%);
+
+    --clr-key-primary-bg: hsl(176, 100%, 44%);
+    --clr-key-primary-shadow: hsl(177, 92%, 70%);
+
+    --clr-key-neutral-bg: hsl(268, 47%, 21%);
+    --clr-key-neutral-shadow: hsl(290, 70%, 36%);
+
+    --clr-text-contrast: hsl(52, 100%, 62%);
+    --clr-text: hsl(0, 0%, 100%);
+    --clt-text-primary: hsl(198, 20%, 13%);
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: var(--clr-main-bg);
+    color: var(--clr-text);
+}
