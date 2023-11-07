@@ -10,10 +10,6 @@ export default function MultiToggle(params: { states: number }) {
 	const states: JSX.Element[] = [];
 
 	const [selectedOption, setSelectedOption] = useState(1);
-	const onChangeEvent = new CustomEvent("change", {
-		detail: { selected: selectedOption },
-	});
-
 	const toggles: JSX.Element[] = [];
 	for (let i = 0; i < params.states; i++) {
 		states.push(
@@ -32,7 +28,13 @@ export default function MultiToggle(params: { states: number }) {
 				checked={selectedOption === i + 1}
 				onChange={(event: any) => {
 					setSelectedOption(Number(event.target.value));
-					dispatchEvent(onChangeEvent);
+					document.dispatchEvent(
+						new CustomEvent("multiToggleChange", {
+							detail: {
+								selected: Number(event.target.value),
+							},
+						})
+					);
 				}}
 			></input>
 		);

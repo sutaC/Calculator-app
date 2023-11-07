@@ -48,7 +48,7 @@ button {
     --clr-key-neutral-shadow: hsl(35, 11%, 61%);
 
     --clr-text-contrast: hsl(60, 10%, 19%);
-    --clr-text: hsl(0, 0%, 100%);
+    --clr-text: hsl(60, 10%, 19%);
 }
 
 :root:has(.color-scheme-3) {
