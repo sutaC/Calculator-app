@@ -107,7 +107,15 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-		const themeNumber = Number(localStorage.getItem("theme") ?? 1);
+		const savedThemeNumber = localStorage.getItem("theme");
+		let themeNumber: number | undefined;
+		if (savedThemeNumber) {
+			themeNumber = Number(savedThemeNumber);
+		} else if (window.matchMedia("(prefers-color-scheme: dark)")) {
+			themeNumber = 1;
+		} else {
+			themeNumber = 2;
+		}
 		document.body.className = "";
 		const theme = `color-scheme-${themeNumber}`;
 		document.body.classList.add(theme);

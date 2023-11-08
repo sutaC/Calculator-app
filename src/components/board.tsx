@@ -19,7 +19,10 @@ export default function Board() {
 			key = "=";
 		}
 
-		if (!key.match(/[0-9\,\.\/x\*\-\+\=]/) && key !== "DEL") {
+		if (
+			(!key.match(/[0-9\,\.\/x\*\-\+\=]/) || key.match(/[a-zA-Z]/)) &&
+			key !== "DEL"
+		) {
 			return;
 		}
 
