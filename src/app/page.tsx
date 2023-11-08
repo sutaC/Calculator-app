@@ -21,10 +21,6 @@ export default function Home() {
 		const sides = bd.split(/[\*\/\+\-]/);
 		const last = sides[sides.length - 1];
 
-		if ((last.match(/[0-9]/)?.length ?? 0) > 10) {
-			return;
-		}
-
 		switch (btn) {
 			case "RESET":
 				bd = "";
@@ -36,6 +32,7 @@ export default function Home() {
 				break;
 			case "+":
 			case "x":
+			case "*":
 			case "/":
 			case "-":
 				if (bd.match(/[\/\+\*\-]/) || bd.length === 0) {
@@ -44,10 +41,11 @@ export default function Home() {
 				bd += btn === "x" ? "*" : btn;
 				break;
 			case ".":
-				if (last.match(/\./) || last.length === 0) {
+			case ",":
+				if (last.match(/\.\,/) || last.length === 0) {
 					break;
 				}
-				bd += btn;
+				bd += ".";
 				break;
 			case "=":
 				let num1: number | undefined, num2: number | undefined;
@@ -56,7 +54,6 @@ export default function Home() {
 					num2 = Number(sides[1]);
 				} catch (error) {
 					console.error(error);
-					bd = "";
 					break;
 				}
 				const action = bd.match(/[\/\+\*\-]/);
@@ -65,7 +62,6 @@ export default function Home() {
 					num2 === undefined ||
 					action == undefined
 				) {
-					bd = "";
 					break;
 				}
 
@@ -87,13 +83,9 @@ export default function Home() {
 						case "-":
 							bd = String(num1 - num2);
 							break;
-						default:
-							bd = "";
-							break;
 					}
 				} catch (error) {
 					console.error(error);
-					bd = "";
 					break;
 				}
 				break;

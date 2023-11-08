@@ -5,7 +5,28 @@ function handleClick(event: any) {
 	document.dispatchEvent(new CustomEvent("boardClick", { detail: { btn } }));
 }
 
+function handleKeyClick(event: KeyboardEvent) {
+	let key = event.key.toLocaleUpperCase();
+
+	if (key === "BACKSPACE") {
+		key = "DEL";
+	} else if (key === "ENTER") {
+		key = "=";
+	}
+
+	if (!key.match(/[0-9\,\.\/x\*\-\+\=]/) && key !== "DEL") {
+		return;
+	}
+
+	event.preventDefault();
+	document.dispatchEvent(
+		new CustomEvent("boardClick", { detail: { btn: key } })
+	);
+}
+
 export default function Board() {
+	document.body.addEventListener("keyup", handleKeyClick);
+
 	return (
 		<div className={styles.board}>
 			<button className={styles.key} onClick={handleClick}>
