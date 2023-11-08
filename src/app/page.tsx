@@ -15,8 +15,15 @@ export default function Home() {
 			console.error("Could not read board click");
 		}
 
-		const sides = bd.split(/[x\/+-]/);
+		if (bd.match(/[a-zA-Z]/)) {
+			bd = "";
+		}
+		const sides = bd.split(/[\*\/\+\-]/);
 		const last = sides[sides.length - 1];
+
+		if ((last.match(/[0-9]/)?.length ?? 0) > 10) {
+			return;
+		}
 
 		switch (btn) {
 			case "RESET":
@@ -27,17 +34,68 @@ export default function Home() {
 					bd = bd.substring(0, bd.length - 1);
 				}
 				break;
-			case "+" || "x" || "/" || "-":
-				// TODO
-				if (
-					bd.includes("+") ||
-					bd.includes("-") ||
-					bd.includes("x") ||
-					bd.includes("/")
-				) {
+			case "+":
+			case "x":
+			case "/":
+			case "-":
+				if (bd.match(/[\/\+\*\-]/) || bd.length === 0) {
 					break;
 				}
 				bd += btn === "x" ? "*" : btn;
+				break;
+			case ".":
+				if (last.match(/\./) || last.length === 0) {
+					break;
+				}
+				bd += btn;
+				break;
+			case "=":
+				let num1: number | undefined, num2: number | undefined;
+				try {
+					num1 = Number(sides[0]);
+					num2 = Number(sides[1]);
+				} catch (error) {
+					console.error(error);
+					bd = "";
+					break;
+				}
+				const action = bd.match(/[\/\+\*\-]/);
+				if (
+					num1 === undefined ||
+					num2 === undefined ||
+					action == undefined
+				) {
+					bd = "";
+					break;
+				}
+
+				try {
+					switch (action[0]) {
+						case "+":
+							bd = String(num1 + num2);
+							break;
+						case "*":
+							bd = String(
+								Math.round(num1 * num2 * 100000) / 100000
+							);
+							break;
+						case "/":
+							bd = String(
+								Math.round((num1 / num2) * 100000) / 100000
+							);
+							break;
+						case "-":
+							bd = String(num1 - num2);
+							break;
+						default:
+							bd = "";
+							break;
+					}
+				} catch (error) {
+					console.error(error);
+					bd = "";
+					break;
+				}
 				break;
 			default:
 				if (last[last.length - 1] === "0" && last.length <= 1) {
